@@ -5,8 +5,6 @@ import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
@@ -44,14 +42,10 @@ class MainActivity : AppCompatActivity() {
             override fun onClick(v: View?) {
 
                 if (nameedittext.text.length > 0) {
-                    GlobalScope.launch {
-                        viewModel.saveText(nameedittext.text.toString())
-                    }
+                    viewModel.saveText(nameedittext.text.toString())
                 }
                 if (ageedittext.text.length > 0) {
-                    GlobalScope.launch {
-                        viewModel.saveNumber(ageedittext.text.toString().toInt())
-                    }
+                    viewModel.saveNumber(ageedittext.text.toString().toInt())
                 }
             }
         })
