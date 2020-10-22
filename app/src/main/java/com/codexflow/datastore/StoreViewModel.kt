@@ -12,7 +12,7 @@ class StoreViewModel(
     application: Application,
 ) : AndroidViewModel(application) {
 
-    private val repository = StoreLayer(getApplication())
+    private val repository = DataStoreRepository(getApplication())
 
     val Name = repository.userNameFlow.asLiveData()
     val Age = repository.userAgeFlow.asLiveData()

@@ -2,9 +2,9 @@ package com.codexflow.datastore
 
 import android.os.Bundle
 import android.view.View
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
+import com.codexflow.datastore.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
@@ -12,10 +12,12 @@ class MainActivity : AppCompatActivity() {
 
 
     private lateinit var viewModel: StoreViewModel
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
 
         viewModel = ViewModelProviders.of(this).get(StoreViewModel::class.java)
@@ -23,29 +25,25 @@ class MainActivity : AppCompatActivity() {
 
         // userManager = StoreLayer(this)
 
-        var textview = findViewById<TextView>(R.id.textView)
-        var textview2 = findViewById<TextView>(R.id.textView2)
-        var nameedittext = findViewById<TextView>(R.id.editText)
-        var ageedittext = findViewById<TextView>(R.id.editText2)
-        var buton = findViewById<TextView>(R.id.buton)
 
         viewModel.Name.observe(this, {
-            textview.text = it
+            binding.textView.text = it
+
         })
 
         viewModel.Age.observe(this, {
-            textview2.text = it.toString()
+            binding.textView2.text = it.toString()
         })
 
 
-        buton.setOnClickListener(object : View.OnClickListener {
+        binding.buton.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
 
-                if (nameedittext.text.length > 0) {
-                    viewModel.saveText(nameedittext.text.toString())
+                if (binding.editText.text.length > 0) {
+                    viewModel.saveText(binding.editText.text.toString())
                 }
-                if (ageedittext.text.length > 0) {
-                    viewModel.saveNumber(ageedittext.text.toString().toInt())
+                if (binding.editText2.text.length > 0) {
+                    viewModel.saveNumber(binding.editText2.text.toString().toInt())
                 }
             }
         })
