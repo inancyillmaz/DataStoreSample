@@ -14,8 +14,9 @@ class StoreViewModel(
 
     private val repository = DataStoreRepository(getApplication())
 
-    val Name = repository.userNameFlow.asLiveData()
-    val Age = repository.userAgeFlow.asLiveData()
+
+    val name = repository.userNameFlow.asLiveData()
+    val age = repository.userAgeFlow.asLiveData()
 
     fun saveText(newValue: String)  {
         viewModelScope.launch(Dispatchers.IO) {

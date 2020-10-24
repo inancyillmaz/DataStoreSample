@@ -3,8 +3,11 @@ package com.codexflow.datastore
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
+
+
 import com.codexflow.datastore.databinding.ActivityMainBinding
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,18 +23,18 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-        viewModel = ViewModelProviders.of(this).get(StoreViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(StoreViewModel::class.java)
 
 
         // userManager = StoreLayer(this)
 
 
-        viewModel.Name.observe(this, {
+        viewModel.name.observe(this, {
             binding.textView.text = it
 
         })
 
-        viewModel.Age.observe(this, {
+        viewModel.age.observe(this, {
             binding.textView2.text = it.toString()
         })
 
