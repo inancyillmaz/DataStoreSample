@@ -1,4 +1,4 @@
-package com.codexflow.datastore
+package com.codexflow.datastore.repository
 
 import android.content.Context
 import androidx.datastore.preferences.createDataStore

@@ -1,9 +1,10 @@
-package com.codexflow.datastore
+package com.codexflow.datastore.ui
 
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.codexflow.datastore.model.StoreViewModel
 
 
 import com.codexflow.datastore.databinding.ActivityMainBinding
